@@ -1,5 +1,5 @@
 const DeviceRaspberry = "http://192.168.1.11:8000";
-const CameraRaspberry = "http://192.168.1.9:8081";
+const CameraRaspberry = "http://192.168.1.16:8081";
 
 $(document).ready(function () {
     SetCameraStraming();
