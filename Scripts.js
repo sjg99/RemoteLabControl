@@ -44,7 +44,7 @@ function set_pos(id) {
     }
     console.log(id);
     var coords = id.split("-");
-    var url = DeviceRaspberry + '/set_position';
+    var url = DeviceRaspberry + '/set_position/';
     var model = {
         x_pos: parseInt(coords[0]),
         y_pos: parseInt(coords[1])
@@ -54,15 +54,18 @@ function set_pos(id) {
     var request = $.ajax({
         url: url,
         method: "POST",
-        data: model,
-        dataType: "json"
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data: JSON.stringify(model),
+        //dataType: "json"
     });
     request.done(function () {
         console.log("Done");
         $('.AjaxLoading').fadeOut(50);
     });
     request.fail(function () {
-        alert("Error en la conexion con el dispositivo");
+        alert("Error en la conexión con el dispositivo");
         $('.AjaxLoading').fadeOut(50);
     });
 }
